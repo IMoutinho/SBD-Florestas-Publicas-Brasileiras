@@ -1,0 +1,2 @@
+-- Arquivo para consultas SQL
+-- Comandos SELECT
