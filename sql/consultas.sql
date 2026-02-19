@@ -12,11 +12,13 @@ JOIN Regulamentacao r ON a.ato_legal = r.ato_legal
 ORDER BY r.ano_criacao DESC;
 
 -- Quantas florestas não foram regulamentadas na última década?
-SELECT COUNT(*) AS qtd_antigas
+SELECT n.nome AS unidade, r.ano_criacao
 FROM Unidade u
+JOIN Nome_Unidade n ON u.codigo = n.unidade_codigo
 JOIN Ato_Legal_Unidade a ON u.codigo = a.unidade_codigo
 JOIN Regulamentacao r ON a.ato_legal = r.ato_legal
-WHERE r.ano_criacao < 2016;
+WHERE r.ano_criacao < 2016
+ORDER BY r.ano_criacao ASC;
 
 -- Quais unidades estão em estágio crítico, ou seja, estão paradas em estudo há pelo menos 10 anos?
 SELECT n.nome, u.estagio, r.ano_criacao
