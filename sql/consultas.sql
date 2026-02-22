@@ -26,7 +26,7 @@ FROM Unidade u
 JOIN Nome_Unidade n ON u.codigo = n.unidade_codigo
 JOIN Ato_Legal_Unidade a ON u.codigo = a.unidade_codigo
 JOIN Regulamentacao r ON a.ato_legal = r.ato_legal
-WHERE u.estagio = 'Em estudo' AND r.ano_criacao < 2015;
+WHERE u.estagio LIKE '%ESTUDO%' AND r.ano_criacao < 2015;
 
 -- Quantas Unidades de Conservação existem por Bioma em ordem decrescente por total de unidades?
 SELECT t.bioma, COUNT(u.codigo) AS total_unidades
