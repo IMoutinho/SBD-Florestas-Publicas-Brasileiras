@@ -2,7 +2,7 @@
 -- Comandos SELECT
 
 
--- Relatório de unidades listando nome, ato legal e ano de criação em ordem decrescente de ano.
+-- Relatório de unidades que já possuem ato legal e ano de criação listando nome, ato legal e ano de criação em ordem decrescente de ano.
 
 SELECT n.nome AS unidade, r.ato_legal, r.ano_criacao
 FROM Unidade u
