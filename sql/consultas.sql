@@ -20,13 +20,14 @@ JOIN Regulamentacao r ON a.ato_legal = r.ato_legal
 WHERE r.ano_criacao < 2016
 ORDER BY r.ano_criacao ASC;
 
--- Quais unidades estão em estágio crítico, ou seja, estão paradas em estudo há pelo menos 10 anos?
-SELECT n.nome, u.estagio, r.ano_criacao
+-- Quantas unidades estão em estágio crítico (paradas em estudo há pelo menos 10 anos), agrupadas por ano?
+SELECT r.ano_criacao, COUNT(u.codigo) AS qtd_unidades_paradas
 FROM Unidade u
-JOIN Nome_Unidade n ON u.codigo = n.unidade_codigo
 JOIN Ato_Legal_Unidade a ON u.codigo = a.unidade_codigo
 JOIN Regulamentacao r ON a.ato_legal = r.ato_legal
-WHERE u.estagio LIKE '%ESTUDO%' AND r.ano_criacao < 2015;
+WHERE u.estagio LIKE '%ESTUDO%' AND r.ano_criacao < 2015
+GROUP BY r.ano_criacao
+ORDER BY r.ano_criacao ASC;
 
 -- Quantas Unidades de Conservação existem por Bioma em ordem decrescente por total de unidades?
 SELECT t.bioma, COUNT(u.codigo) AS total_unidades
