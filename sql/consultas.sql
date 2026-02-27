@@ -1,9 +1,7 @@
--- Arquivo para consultas SQL
--- Comandos SELECT
+SET SEARCH_PATH TO florestas_publicas;
 
 
 -- Relatório de unidades que já possuem ato legal e ano de criação listando nome, ato legal e ano de criação em ordem decrescente de ano.
-
 SELECT n.nome AS unidade, r.ato_legal, r.ano_criacao
 FROM Unidade u
 JOIN Nome_Unidade n ON u.codigo = n.unidade_codigo
@@ -11,7 +9,7 @@ JOIN Ato_Legal_Unidade a ON u.codigo = a.unidade_codigo
 JOIN Regulamentacao r ON a.ato_legal = r.ato_legal
 ORDER BY r.ano_criacao DESC;
 
--- Quantas florestas não foram regulamentadas na última década?
+-- Quais florestas foram regulamentadas há mais de uma última década?
 SELECT n.nome AS unidade, r.ano_criacao
 FROM Unidade u
 JOIN Nome_Unidade n ON u.codigo = n.unidade_codigo
@@ -27,7 +25,7 @@ JOIN Ato_Legal_Unidade a ON u.codigo = a.unidade_codigo
 JOIN Regulamentacao r ON a.ato_legal = r.ato_legal
 WHERE u.estagio LIKE '%ESTUDO%' AND r.ano_criacao < 2015
 GROUP BY r.ano_criacao
-ORDER BY r.ano_criacao ASC;
+ORDER BY r.ano_criacao;
 
 -- Quantas Unidades de Conservação existem por Bioma em ordem decrescente por total de unidades?
 SELECT t.bioma, COUNT(u.codigo) AS total_unidades
