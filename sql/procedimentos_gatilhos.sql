@@ -22,25 +22,20 @@ END $$
 LANGUAGE plpgsql;
 
 
--- Criação da Trigger
+-- Trigger
 CREATE OR REPLACE FUNCTION florestas_publicas.func_valida_coordenadas_brasil()
 RETURNS trigger AS $$
 BEGIN
-    -- Aceita coordenadas nulas para unidades não georeferenciadas, mas valida as coordenadas quando fornecidas.
     IF NEW.latitude IS NOT NULL AND NEW.longitude IS NOT NULL THEN
-        
-        -- Verifica se as coordenadas estão do Brasil
         IF (NEW.latitude > 5.5 OR NEW.latitude < -33.8) OR 
            (NEW.longitude > -34.7 OR NEW.longitude < -74.0) THEN
             RAISE EXCEPTION 'Coordenadas inválidas. A unidade % possui latitude (%) e longitude (%) fora dos limites do Brasil.', NEW.codigo, NEW.latitude, NEW.longitude;
         END IF;
     END IF;
-
-    -- Retorna NEW para efitivar a operação de INSERT ou UPDATE
     RETURN NEW;
 END $$ LANGUAGE plpgsql;
 
--- Criação do Gatilho
+-- Gatilho
 CREATE TRIGGER trg_valida_coordenadas
 BEFORE INSERT OR UPDATE ON florestas_publicas.Unidade
 FOR EACH ROW
