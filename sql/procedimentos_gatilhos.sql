@@ -35,7 +35,7 @@ BEGIN
     RETURN NEW;
 END $$ LANGUAGE plpgsql;
 
--- Gatilho
+
 CREATE TRIGGER trg_valida_coordenadas
 BEFORE INSERT OR UPDATE ON florestas_publicas.Unidade
 FOR EACH ROW
