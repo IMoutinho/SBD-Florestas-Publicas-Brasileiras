@@ -12,7 +12,7 @@ BEGIN
     INTO v_nome, v_estagio, v_area, v_ano
     FROM Unidade u, Nome_Unidade n, Metricas_Area m, Data_Criacao_Unidade d 
    WHERE  u.codigo = n.unidade_codigo AND u.area_ha = m.area_ha AND u.codigo = d.unidade_codigo AND u.codigo = unidade_id;
-    IF v_ano > 2000 AND v_area > 100000 AND v_estagio IN ('Em estudo', 'Delimitada', 'Declarada') THEN
+    IF v_ano > 2000 AND v_area > 100000 AND v_estagio IN ('EM ESTUDO', 'DELIMITADA', 'DECLARADA') THEN
         RETURN 'ALERTA: A Unidade ' || v_nome || ' possui vasta extensão (' || v_area || ' ha) e permanece em estágio inicial de regularização.';
     ELSE
         RETURN 'Status Regular: A unidade não apresenta inconsistências de maturação territorial.';
