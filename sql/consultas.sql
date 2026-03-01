@@ -102,6 +102,6 @@ JOIN Territorio t ON u.geo_codigo = t.geo_codigo
 WHERE u.area_ha > (SELECT AVG(area_ha) FROM Unidade) 
 ORDER BY u.area_ha DESC;
 
+--Consulta procedimento
 SELECT verificarEstagioCritico('FPA-4117602-036-HL-275');
-
 SELECT verificarEstagioCritico('FPA-1300904-034-CS-118');
