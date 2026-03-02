@@ -1,3 +1,5 @@
+-- Usuário do pgadmin onde o bd está armazenado: db_gabriel_moutinho
+
 SET SEARCH_PATH TO florestas_publicas;
 
 
