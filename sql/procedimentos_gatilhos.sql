@@ -1,3 +1,5 @@
+-- Usuário do pgadmin onde o bd está armazenado: db_gabriel_moutinho
+
 -- PROCEDIMENTOS E GATILHO
 -- Verifica se uma unidade está em estágio crítico (criada após 2000, com mais de 100 mil hectares e paralisada em estudo inicial) e retorna um alerta.
 CREATE OR REPLACE FUNCTION verificarEstagioCritico(unidade_id TEXT)
