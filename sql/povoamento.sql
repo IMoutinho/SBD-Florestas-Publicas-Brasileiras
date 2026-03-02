@@ -1,3 +1,5 @@
+-- Usuário do pgadmin onde o bd está armazenado: db_gabriel_moutinho
+
 SET search_path TO florestas_publicas;
 INSERT INTO Categoria_Protecao (categoria, protecao) VALUES ('TRQ', 'USO SUSTENTAVEL') ON CONFLICT DO NOTHING;
 INSERT INTO Orgao_Governamental (orgao, governo) VALUES ('INCRA', 'FEDERAL') ON CONFLICT DO NOTHING;
