@@ -1,3 +1,5 @@
+-- Usuário do pgadmin onde o bd está armazenado: db_gabriel_moutinho
+
 -- Arquivo para criação das tabelas (DDL)
 -- Comandos CREATE TABLE
 
