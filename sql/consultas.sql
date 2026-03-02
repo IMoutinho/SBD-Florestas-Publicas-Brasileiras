@@ -105,3 +105,17 @@ ORDER BY u.area_ha DESC;
 --Consulta procedimento
 SELECT verificarEstagioCritico('FPA-4117602-036-HL-275');
 SELECT verificarEstagioCritico('FPA-1300904-034-CS-118');
+
+-- Testa Gatilhos
+-- Teste utilizando coordenadas Brasileiras (Brasília)
+UPDATE florestas_publicas.Unidade 
+SET latitude = -15.7938, 
+    longitude = -47.8827 
+WHERE codigo = (SELECT codigo FROM florestas_publicas.Unidade LIMIT 1);
+
+-- Teste utilizando coordenadas Internacionais (França)
+UPDATE florestas_publicas.Unidade 
+SET latitude = 48.8566, 
+    longitude = 2.3522 
+WHERE codigo = (SELECT codigo FROM florestas_publicas.Unidade LIMIT 1);
+
